@@ -1,0 +1,2314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MiniTube Ads - Create Campaign</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:Inter,Arial,Helvetica,sans-serif;
+  background:#090909;
+  color:#fff;
+  min-height:100vh;
+}
+
+button,input,select,textarea{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+/* ================= HEADER ================= */
+
+.header{
+  height:70px;
+  border-bottom:1px solid #242424;
+  background:rgba(9,9,9,.95);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 6%;
+  position:sticky;
+  top:0;
+  z-index:100;
+  backdrop-filter:blur(12px);
+}
+
+.logo{
+  font-size:22px;
+  font-weight:800;
+}
+
+.logo span{
+  color:#ff2020;
+}
+
+.back-btn{
+  border:1px solid #333;
+  background:#151515;
+  color:#ddd;
+  padding:10px 16px;
+  border-radius:10px;
+}
+
+.back-btn:hover{
+  background:#222;
+}
+
+/* ================= MAIN ================= */
+
+.container{
+  width:min(1100px,92%);
+  margin:40px auto 80px;
+}
+
+.top-title{
+  margin-bottom:28px;
+}
+
+.top-title h1{
+  font-size:34px;
+  margin-bottom:8px;
+}
+
+.top-title p{
+  color:#999;
+}
+
+/* ================= STEPS ================= */
+
+.steps{
+  display:flex;
+  align-items:center;
+  margin-bottom:30px;
+  overflow-x:auto;
+  padding-bottom:5px;
+}
+
+.step{
+  display:flex;
+  align-items:center;
+  color:#777;
+  white-space:nowrap;
+}
+
+.step-number{
+  width:34px;
+  height:34px;
+  border-radius:50%;
+  border:1px solid #444;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:14px;
+  font-weight:bold;
+  background:#111;
+}
+
+.step.active{
+  color:#fff;
+}
+
+.step.active .step-number{
+  background:#ff2020;
+  border-color:#ff2020;
+  color:white;
+}
+
+.step.done .step-number{
+  background:#222;
+  border-color:#555;
+  color:#fff;
+}
+
+.step-line{
+  width:65px;
+  height:1px;
+  background:#333;
+  margin:0 10px;
+}
+
+/* ================= CARD ================= */
+
+.card{
+  background:#111;
+  border:1px solid #282828;
+  border-radius:18px;
+  padding:30px;
+  box-shadow:0 20px 60px rgba(0,0,0,.25);
+}
+
+.step-page{
+  display:none;
+}
+
+.step-page.active-page{
+  display:block;
+}
+
+.page-title{
+  font-size:24px;
+  margin-bottom:8px;
+}
+
+.page-description{
+  color:#8f8f8f;
+  margin-bottom:28px;
+  line-height:1.6;
+}
+
+/* ================= FORM ================= */
+
+.form-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+}
+
+.form-group{
+  margin-bottom:20px;
+}
+
+.full{
+  grid-column:1 / -1;
+}
+
+label{
+  display:block;
+  margin-bottom:8px;
+  font-size:14px;
+  color:#ddd;
+  font-weight:600;
+}
+
+.required{
+  color:#ff3030;
+}
+
+input,
+select,
+textarea{
+  width:100%;
+  background:#0a0a0a;
+  border:1px solid #333;
+  color:#fff;
+  padding:14px;
+  border-radius:10px;
+  outline:none;
+  transition:.2s;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+  border-color:#ff3030;
+}
+
+textarea{
+  min-height:110px;
+  resize:vertical;
+}
+
+.helper{
+  font-size:12px;
+  color:#777;
+  margin-top:7px;
+}
+
+/* ================= AD METHOD ================= */
+
+.method-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+  margin-bottom:25px;
+}
+
+.method-card{
+  border:1px solid #333;
+  background:#0c0c0c;
+  padding:24px;
+  border-radius:15px;
+  transition:.2s;
+}
+
+.method-card:hover{
+  border-color:#555;
+}
+
+.method-card.selected{
+  border-color:#ff2020;
+  background:#160909;
+}
+
+.method-icon{
+  font-size:30px;
+  margin-bottom:12px;
+}
+
+.method-card h3{
+  margin-bottom:7px;
+}
+
+.method-card p{
+  color:#888;
+  font-size:14px;
+  line-height:1.5;
+}
+
+.method-radio{
+  margin-top:18px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.method-radio input{
+  width:auto;
+}
+
+/* ================= UPLOAD ================= */
+
+.upload-box{
+  border:2px dashed #363636;
+  border-radius:15px;
+  min-height:220px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:30px;
+  background:#0b0b0b;
+}
+
+.upload-content h3{
+  margin-bottom:8px;
+}
+
+.upload-content p{
+  color:#777;
+  font-size:13px;
+  margin-bottom:18px;
+}
+
+.upload-btn{
+  display:inline-block;
+  background:#ff2020;
+  padding:12px 20px;
+  border-radius:9px;
+  font-weight:700;
+}
+
+.upload-btn:hover{
+  background:#e31616;
+}
+
+#videoInput{
+  display:none;
+}
+
+.video-preview{
+  display:none;
+  margin-top:20px;
+  background:#050505;
+  border-radius:14px;
+  overflow:hidden;
+  border:1px solid #292929;
+}
+
+.video-preview video{
+  width:100%;
+  max-height:430px;
+  display:block;
+  background:#000;
+}
+
+.video-info{
+  padding:12px 15px;
+  display:flex;
+  justify-content:space-between;
+  color:#aaa;
+  font-size:13px;
+}
+
+/* ================= AI ================= */
+
+.ai-box{
+  border:1px solid #393939;
+  background:linear-gradient(135deg,#141414,#0b0b0b);
+  border-radius:15px;
+  padding:22px;
+}
+
+.ai-badge{
+  display:inline-block;
+  font-size:11px;
+  background:#272727;
+  padding:5px 9px;
+  border-radius:20px;
+  margin-bottom:12px;
+  color:#ddd;
+}
+
+.ai-box h3{
+  margin-bottom:7px;
+}
+
+.ai-box p{
+  color:#888;
+  font-size:14px;
+  line-height:1.5;
+  margin-bottom:20px;
+}
+
+.ai-generate-btn{
+  background:#fff;
+  color:#000;
+  border:none;
+  padding:12px 18px;
+  border-radius:9px;
+  font-weight:700;
+}
+
+.ai-generate-btn:hover{
+  background:#ddd;
+}
+
+.ai-status{
+  display:none;
+  margin-top:15px;
+  color:#aaa;
+  font-size:13px;
+}
+
+/* ================= TARGETING ================= */
+
+.target-options{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+  margin-bottom:25px;
+}
+
+.target-option{
+  border:1px solid #333;
+  background:#0b0b0b;
+  padding:18px;
+  border-radius:13px;
+  cursor:pointer;
+}
+
+.target-option.selected{
+  border-color:#ff2020;
+  background:#160909;
+}
+
+.target-option h3{
+  font-size:16px;
+  margin-bottom:5px;
+}
+
+.target-option p{
+  color:#777;
+  font-size:12px;
+}
+
+.location-box{
+  border-top:1px solid #292929;
+  padding-top:25px;
+}
+
+.radius-row{
+  display:flex;
+  gap:15px;
+  align-items:center;
+}
+
+.range-value{
+  min-width:75px;
+  text-align:center;
+  background:#1c1c1c;
+  padding:10px;
+  border-radius:8px;
+}
+
+input[type="range"]{
+  padding:0;
+}
+
+/* ================= CHECKBOXES ================= */
+
+.checkbox-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+.check-pill{
+  border:1px solid #333;
+  background:#0b0b0b;
+  padding:10px 14px;
+  border-radius:20px;
+  cursor:pointer;
+  font-size:13px;
+}
+
+.check-pill.active{
+  border-color:#ff2020;
+  background:#180909;
+}
+
+/* ================= BUDGET ================= */
+
+.budget-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+}
+
+.budget-highlight{
+  margin-top:20px;
+  padding:22px;
+  border-radius:14px;
+  background:#171717;
+  border:1px solid #292929;
+}
+
+.budget-number{
+  font-size:32px;
+  font-weight:800;
+  margin-top:6px;
+}
+
+.red{
+  color:#ff3030;
+}
+
+.budget-note{
+  color:#777;
+  font-size:12px;
+  margin-top:6px;
+}
+
+/* ================= REVIEW ================= */
+
+.review-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+}
+
+.review-box{
+  background:#0b0b0b;
+  border:1px solid #292929;
+  padding:20px;
+  border-radius:14px;
+}
+
+.review-box h3{
+  font-size:14px;
+  color:#999;
+  margin-bottom:14px;
+}
+
+.review-value{
+  font-size:17px;
+  line-height:1.5;
+}
+
+.review-video{
+  background:#000;
+  border-radius:12px;
+  overflow:hidden;
+}
+
+.review-video video{
+  width:100%;
+  display:block;
+  max-height:360px;
+}
+
+.notice{
+  margin-top:22px;
+  padding:15px;
+  background:#16120a;
+  border:1px solid #39301c;
+  color:#b8aa87;
+  border-radius:10px;
+  font-size:13px;
+  line-height:1.5;
+}
+
+/* ================= BUTTONS ================= */
+
+.navigation{
+  display:flex;
+  justify-content:space-between;
+  margin-top:25px;
+}
+
+.btn{
+  border:none;
+  padding:13px 22px;
+  border-radius:10px;
+  font-weight:700;
+  font-size:14px;
+}
+
+.btn-secondary{
+  background:#222;
+  color:#fff;
+  border:1px solid #333;
+}
+
+.btn-secondary:hover{
+  background:#2b2b2b;
+}
+
+.btn-primary{
+  background:#ff2020;
+  color:#fff;
+}
+
+.btn-primary:hover{
+  background:#e31616;
+}
+
+.btn-success{
+  background:#16a34a;
+  color:#fff;
+}
+
+/* ================= SUCCESS ================= */
+
+.success{
+  display:none;
+  text-align:center;
+  padding:70px 20px;
+}
+
+.success-icon{
+  width:75px;
+  height:75px;
+  border-radius:50%;
+  background:#12361f;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:35px;
+  margin:0 auto 20px;
+}
+
+.success h2{
+  font-size:30px;
+  margin-bottom:10px;
+}
+
+.success p{
+  color:#888;
+  max-width:550px;
+  margin:0 auto 25px;
+  line-height:1.6;
+}
+
+/* ================= TOAST ================= */
+
+.toast{
+  position:fixed;
+  bottom:25px;
+  left:50%;
+  transform:translateX(-50%) translateY(100px);
+  background:#fff;
+  color:#000;
+  padding:13px 20px;
+  border-radius:10px;
+  font-size:14px;
+  font-weight:600;
+  opacity:0;
+  transition:.3s;
+  z-index:500;
+}
+
+.toast.show{
+  opacity:1;
+  transform:translateX(-50%) translateY(0);
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:750px){
+
+  .header{
+    padding:0 4%;
+  }
+
+  .container{
+    width:94%;
+    margin-top:25px;
+  }
+
+  .top-title h1{
+    font-size:27px;
+  }
+
+  .card{
+    padding:20px;
+  }
+
+  .form-grid,
+  .method-grid,
+  .budget-grid,
+  .review-grid{
+    grid-template-columns:1fr;
+  }
+
+  .target-options{
+    grid-template-columns:1fr;
+  }
+
+  .step-line{
+    width:25px;
+  }
+
+  .navigation{
+    gap:10px;
+  }
+
+  .navigation .btn{
+    flex:1;
+  }
+
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+
+  <div class="logo">
+    ▶ <span>MiniTube</span> Ads
+  </div>
+
+  <button class="back-btn" onclick="goBack()">
+    ← Dashboard
+  </button>
+
+</header>
+
+
+<main class="container">
+
+  <div class="top-title">
+    <h1>Create Campaign</h1>
+    <p>Create your advertisement and choose exactly where you want it to appear.</p>
+  </div>
+
+
+  <!-- STEPS -->
+
+  <div class="steps">
+
+    <div class="step active" id="stepIndicator1">
+      <div class="step-number">1</div>
+      <span>Campaign</span>
+    </div>
+
+    <div class="step-line"></div>
+
+    <div class="step" id="stepIndicator2">
+      <div class="step-number">2</div>
+      <span>Ad</span>
+    </div>
+
+    <div class="step-line"></div>
+
+    <div class="step" id="stepIndicator3">
+      <div class="step-number">3</div>
+      <span>Targeting</span>
+    </div>
+
+    <div class="step-line"></div>
+
+    <div class="step" id="stepIndicator4">
+      <div class="step-number">4</div>
+      <span>Budget</span>
+    </div>
+
+    <div class="step-line"></div>
+
+    <div class="step" id="stepIndicator5">
+      <div class="step-number">5</div>
+      <span>Review</span>
+    </div>
+
+  </div>
+
+
+  <div class="card">
+
+
+    <!-- ================= STEP 1 ================= -->
+
+    <section class="step-page active-page" id="page1">
+
+      <h2 class="page-title">Tell us about your campaign</h2>
+
+      <p class="page-description">
+        Add the basic information about the product, business or service you want to advertise.
+      </p>
+
+
+      <div class="form-grid">
+
+        <div class="form-group">
+
+          <label>
+            Business / Brand Name <span class="required">*</span>
+          </label>
+
+          <input
+            type="text"
+            id="businessName"
+            placeholder="e.g. Ocean View Resort"
+          >
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label>
+            Product / Service Name <span class="required">*</span>
+          </label>
+
+          <input
+            type="text"
+            id="productName"
+            placeholder="e.g. Weekend Beach Package"
+          >
+
+        </div>
+
+
+        <div class="form-group full">
+
+          <label>
+            Campaign Name <span class="required">*</span>
+          </label>
+
+          <input
+            type="text"
+            id="campaignName"
+            placeholder="e.g. Summer Resort Campaign 2026"
+          >
+
+          <div class="helper">
+            This name is only for your campaign dashboard.
+          </div>
+
+        </div>
+
+
+        <div class="form-group full">
+
+          <label>
+            Ad Message
+          </label>
+
+          <textarea
+            id="adMessage"
+            placeholder="Tell viewers what makes your product special..."
+          ></textarea>
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label>
+            Landing Page / Website
+          </label>
+
+          <input
+            type="url"
+            id="landingPage"
+            placeholder="https://yourwebsite.com"
+          >
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label>
+            Call To Action
+          </label>
+
+          <select id="cta">
+
+            <option value="Learn More">Learn More</option>
+            <option value="Shop Now">Shop Now</option>
+            <option value="Book Now">Book Now</option>
+            <option value="Visit Website">Visit Website</option>
+            <option value="Get Offer">Get Offer</option>
+            <option value="Contact Us">Contact Us</option>
+
+          </select>
+
+        </div>
+
+      </div>
+
+
+      <div class="navigation">
+
+        <div></div>
+
+        <button class="btn btn-primary" onclick="nextStep()">
+          Continue →
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================= STEP 2 ================= -->
+
+    <section class="step-page" id="page2">
+
+      <h2 class="page-title">Create your advertisement</h2>
+
+      <p class="page-description">
+        Upload your own short video or prepare an AI-generated advertisement.
+      </p>
+
+
+      <div class="method-grid">
+
+        <div
+          class="method-card selected"
+          id="uploadMethod"
+          onclick="selectAdMethod('upload')"
+        >
+
+          <div class="method-icon">🎬</div>
+
+          <h3>Upload Video</h3>
+
+          <p>
+            Use your own professionally created advertisement.
+            Recommended length: 10–30 seconds.
+          </p>
+
+          <div class="method-radio">
+            <input type="radio" name="adMethod" checked>
+            <span>Use my video</span>
+          </div>
+
+        </div>
+
+
+        <div
+          class="method-card"
+          id="aiMethod"
+          onclick="selectAdMethod('ai')"
+        >
+
+          <div class="method-icon">✨</div>
+
+          <h3>AI Advertisement</h3>
+
+          <p>
+            Describe your product and style. The AI video generation system
+            can create your short advertisement.
+          </p>
+
+          <div class="method-radio">
+            <input type="radio" name="adMethod">
+            <span>Create with AI</span>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- UPLOAD AREA -->
+
+      <div id="uploadArea">
+
+        <div class="upload-box">
+
+          <div class="upload-content">
+
+            <h3>Upload your ad video</h3>
+
+            <p>
+              MP4, WebM or MOV • 10–30 seconds recommended
+            </p>
+
+            <label for="videoInput" class="upload-btn">
+              Choose Video
+            </label>
+
+            <input
+              type="file"
+              id="videoInput"
+              accept="video/mp4,video/webm,video/quicktime"
+            >
+
+          </div>
+
+        </div>
+
+
+        <div class="video-preview" id="videoPreview">
+
+          <video id="previewVideo" controls></video>
+
+          <div class="video-info">
+
+            <span id="videoName">video.mp4</span>
+
+            <span id="videoDuration">0 sec</span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- AI AREA -->
+
+      <div id="aiArea" style="display:none;">
+
+        <div class="ai-box">
+
+          <div class="ai-badge">
+            AI Advertisement Studio
+          </div>
+
+          <h3>Describe the advertisement you want</h3>
+
+          <p>
+            Example: "Create a premium 15 second advertisement for a beach
+            resort. Show a beautiful ocean, luxury rooms, swimming pool and
+            a limited-time weekend offer."
+          </p>
+
+
+          <textarea
+            id="aiPrompt"
+            placeholder="Describe your product, video style, scene, offer and audience..."
+          ></textarea>
+
+
+          <br><br>
+
+          <select id="aiDuration">
+
+            <option value="10">10 seconds</option>
+            <option value="15" selected>15 seconds</option>
+            <option value="20">20 seconds</option>
+            <option value="30">30 seconds</option>
+
+          </select>
+
+          <br><br>
+
+          <button
+            class="ai-generate-btn"
+            onclick="generateAIAd()"
+          >
+            ✨ Generate Advertisement
+          </button>
+
+          <div class="ai-status" id="aiStatus">
+            AI generation will be connected to the video generation API later.
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="navigation">
+
+        <button class="btn btn-secondary" onclick="previousStep()">
+          ← Back
+        </button>
+
+        <button class="btn btn-primary" onclick="nextStep()">
+          Continue →
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================= STEP 3 ================= -->
+
+    <section class="step-page" id="page3">
+
+      <h2 class="page-title">Choose your audience</h2>
+
+      <p class="page-description">
+        Decide where your advertisement should be shown.
+      </p>
+
+
+      <div class="target-options">
+
+        <div
+          class="target-option selected"
+          id="localTarget"
+          onclick="selectTarget('local')"
+        >
+
+          <h3>📍 Local</h3>
+
+          <p>
+            Target a city, PIN code or radius around a location.
+          </p>
+
+        </div>
+
+
+        <div
+          class="target-option"
+          id="nationalTarget"
+          onclick="selectTarget('national')"
+        >
+
+          <h3>🇮🇳 National</h3>
+
+          <p>
+            Reach people across an entire country.
+          </p>
+
+        </div>
+
+
+        <div
+          class="target-option"
+          id="globalTarget"
+          onclick="selectTarget('global')"
+        >
+
+          <h3>🌍 International</h3>
+
+          <p>
+            Target selected countries or international audiences.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="location-box">
+
+        <div class="form-grid">
+
+
+          <div class="form-group">
+
+            <label>Country</label>
+
+            <select id="country">
+
+              <option value="India">India</option>
+              <option value="United States">United States</option>
+              <option value="United Kingdom">United Kingdom</option>
+              <option value="Canada">Canada</option>
+              <option value="Australia">Australia</option>
+              <option value="United Arab Emirates">United Arab Emirates</option>
+              <option value="Singapore">Singapore</option>
+              <option value="Other">Other</option>
+
+            </select>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>State / Region</label>
+
+            <input
+              type="text"
+              id="state"
+              placeholder="e.g. Jharkhand"
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>City</label>
+
+            <input
+              type="text"
+              id="city"
+              placeholder="e.g. Jamshedpur"
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>PIN / Postal Code</label>
+
+            <input
+              type="text"
+              id="pin"
+              placeholder="e.g. 831001"
+            >
+
+          </div>
+
+
+          <div class="form-group full">
+
+            <label>
+              Target Radius
+            </label>
+
+            <div class="radius-row">
+
+              <input
+                type="range"
+                id="radius"
+                min="1"
+                max="500"
+                value="50"
+                oninput="updateRadius()"
+              >
+
+              <div class="range-value">
+                <span id="radiusValue">50</span> km
+              </div>
+
+            </div>
+
+            <div class="helper">
+              Useful for local businesses such as restaurants, resorts,
+              shops, events and services.
+            </div>
+
+          </div>
+
+
+          <div class="form-group full">
+
+            <label>
+              Audience Interests
+            </label>
+
+            <div class="checkbox-row">
+
+              <div class="check-pill" onclick="toggleInterest(this)">
+                Travel
+              </div>
+
+              <div class="check-pill" onclick="toggleInterest(this)">
+                Food
+              </div>
+
+              <div class="check-pill" onclick="toggleInterest(this)">
+                Technology
+              </div>
+
+              <div class="check-pill" onclick="toggleInterest(this)">
+                Gaming
+              </div>
+
+              <div class="check-pill" onclick="toggleInterest(this)">
+                Fashion
+              </div>
+
+              <div class="check-pill" onclick="toggleInterest(this)">
+                Sports
+              </div>
+
+              <div class="check-pill" onclick="toggleInterest(this)">
+                Business
+              </div>
+
+              <div class="check-pill" onclick="toggleInterest(this)">
+                Education
+              </div>
+
+            </div>
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+
+      <div class="navigation">
+
+        <button class="btn btn-secondary" onclick="previousStep()">
+          ← Back
+        </button>
+
+        <button class="btn btn-primary" onclick="nextStep()">
+          Continue →
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================= STEP 4 ================= -->
+
+    <section class="step-page" id="page4">
+
+      <h2 class="page-title">Set your campaign budget</h2>
+
+      <p class="page-description">
+        Start with a simple impression-based advertising model.
+      </p>
+
+
+      <div class="budget-grid">
+
+        <div class="form-group">
+
+          <label>
+            Cost per 1,000 impressions
+          </label>
+
+          <input
+            type="number"
+            id="cpm"
+            value="100"
+            min="1"
+            oninput="calculateBudget()"
+          >
+
+          <div class="helper">
+            Example starting rate. Actual pricing can be configured later.
+          </div>
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label>
+            Total Campaign Budget (₹)
+          </label>
+
+          <input
+            type="number"
+            id="budget"
+            value="1000"
+            min="100"
+            oninput="calculateBudget()"
+          >
+
+          <div class="helper">
+            Minimum budget currently shown as ₹100.
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="budget-highlight">
+
+        <div style="color:#888;">
+          Estimated impressions
+        </div>
+
+        <div class="budget-number">
+          <span id="estimatedImpressions">10,000</span>
+        </div>
+
+        <div class="budget-note">
+          Estimate = Campaign Budget ÷ CPM × 1,000
+        </div>
+
+      </div>
+
+
+      <br>
+
+
+      <div class="budget-highlight">
+
+        <div style="color:#888;">
+          Estimated advertiser spend
+        </div>
+
+        <div class="budget-number red">
+          ₹<span id="estimatedSpend">1,000</span>
+        </div>
+
+      </div>
+
+
+      <div class="notice">
+        This is currently a frontend calculator. Payment processing,
+        campaign charging, actual impression delivery and billing will
+        be connected to the MiniTube Ads backend later.
+      </div>
+
+
+      <div class="navigation">
+
+        <button class="btn btn-secondary" onclick="previousStep()">
+          ← Back
+        </button>
+
+        <button class="btn btn-primary" onclick="nextStep()">
+          Review Campaign →
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================= STEP 5 ================= -->
+
+    <section class="step-page" id="page5">
+
+      <h2 class="page-title">Review your campaign</h2>
+
+      <p class="page-description">
+        Check everything before submitting your advertisement for review.
+      </p>
+
+
+      <div class="review-grid">
+
+
+        <div class="review-box">
+
+          <h3>CAMPAIGN</h3>
+
+          <div class="review-value">
+
+            <strong id="reviewCampaign">
+              —
+            </strong>
+
+            <br>
+
+            <span id="reviewBusiness">
+              —
+            </span>
+
+            <br>
+
+            <span id="reviewProduct">
+              —
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <div class="review-box">
+
+          <h3>CALL TO ACTION</h3>
+
+          <div class="review-value" id="reviewCTA">
+            Learn More
+          </div>
+
+        </div>
+
+
+        <div class="review-box">
+
+          <h3>TARGETING</h3>
+
+          <div class="review-value" id="reviewTarget">
+            Local
+          </div>
+
+        </div>
+
+
+        <div class="review-box">
+
+          <h3>BUDGET</h3>
+
+          <div class="review-value">
+
+            ₹<span id="reviewBudget">1,000</span>
+
+            <br>
+
+            <small style="color:#777;">
+              <span id="reviewImpressions">10,000</span>
+              estimated impressions
+            </small>
+
+          </div>
+
+        </div>
+
+
+        <div class="review-box full">
+
+          <h3>ADVERTISEMENT</h3>
+
+          <div id="reviewVideoContainer">
+
+            <div
+              style="
+                background:#161616;
+                padding:35px;
+                text-align:center;
+                border-radius:12px;
+                color:#777;
+              "
+              id="noVideoMessage"
+            >
+              No video uploaded yet.
+            </div>
+
+          </div>
+
+        </div>
+
+
+      </div>
+
+
+      <div class="notice">
+
+        <strong>What happens after submission?</strong><br><br>
+
+        Your campaign will enter <strong>Pending Review</strong>.
+        After moderation and payment integration are connected,
+        approved campaigns will be eligible for ad delivery.
+
+      </div>
+
+
+      <div class="navigation">
+
+        <button class="btn btn-secondary" onclick="previousStep()">
+          ← Back
+        </button>
+
+        <button
+          class="btn btn-primary"
+          onclick="submitCampaign()"
+        >
+          Submit Campaign →
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================= SUCCESS ================= -->
+
+    <section class="success" id="successPage">
+
+      <div class="success-icon">
+        ✓
+      </div>
+
+      <h2>Campaign Submitted</h2>
+
+      <p>
+        Your campaign has been saved as a pending campaign.
+        The next stage will connect this workflow to authentication,
+        Supabase, video storage, payment and campaign delivery.
+      </p>
+
+      <button
+        class="btn btn-primary"
+        onclick="goBack()"
+      >
+        Return to Dashboard
+      </button>
+
+    </section>
+
+
+  </div>
+
+</main>
+
+
+<div class="toast" id="toast">
+  Saved
+</div>
+
+
+<script>
+
+/* =====================================================
+   MINITUBE ADS - CREATE CAMPAIGN
+   FRONTEND VERSION
+===================================================== */
+
+let currentStep = 1;
+
+let adMethod = "upload";
+
+let targetType = "local";
+
+let videoURL = null;
+
+
+/* ================= BACK ================= */
+
+function goBack(){
+
+  if(confirm("Leave campaign creation? Your current form will not be submitted.")){
+
+    window.location.href = "index.html";
+
+  }
+
+}
+
+
+/* ================= STEP NAVIGATION ================= */
+
+function showStep(step){
+
+  document.querySelectorAll(".step-page").forEach(page=>{
+    page.classList.remove("active-page");
+  });
+
+  document.getElementById("page" + step).classList.add("active-page");
+
+
+  for(let i=1;i<=5;i++){
+
+    const indicator = document.getElementById("stepIndicator" + i);
+
+    indicator.classList.remove("active");
+    indicator.classList.remove("done");
+
+    if(i < step){
+      indicator.classList.add("done");
+    }
+
+    if(i === step){
+      indicator.classList.add("active");
+    }
+
+  }
+
+
+  if(step === 5){
+
+    updateReview();
+
+  }
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+}
+
+
+function nextStep(){
+
+  if(!validateStep(currentStep)){
+    return;
+  }
+
+  if(currentStep < 5){
+
+    currentStep++;
+
+    showStep(currentStep);
+
+  }
+
+}
+
+
+function previousStep(){
+
+  if(currentStep > 1){
+
+    currentStep--;
+
+    showStep(currentStep);
+
+  }
+
+}
+
+
+/* ================= VALIDATION ================= */
+
+function validateStep(step){
+
+  if(step === 1){
+
+    const business =
+      document.getElementById("businessName").value.trim();
+
+    const product =
+      document.getElementById("productName").value.trim();
+
+    const campaign =
+      document.getElementById("campaignName").value.trim();
+
+
+    if(!business){
+
+      showToast("Please enter your business / brand name.");
+
+      return false;
+
+    }
+
+
+    if(!product){
+
+      showToast("Please enter your product or service name.");
+
+      return false;
+
+    }
+
+
+    if(!campaign){
+
+      showToast("Please enter a campaign name.");
+
+      return false;
+
+    }
+
+  }
+
+
+  if(step === 2){
+
+    if(adMethod === "upload" && !videoURL){
+
+      showToast("Please upload an advertisement video first.");
+
+      return false;
+
+    }
+
+
+    if(adMethod === "ai"){
+
+      const prompt =
+        document.getElementById("aiPrompt").value.trim();
+
+      if(!prompt){
+
+        showToast("Please describe the AI advertisement.");
+
+        return false;
+
+      }
+
+    }
+
+  }
+
+
+  if(step === 3){
+
+    const country =
+      document.getElementById("country").value;
+
+    if(!country){
+
+      showToast("Please select a country.");
+
+      return false;
+
+    }
+
+  }
+
+
+  if(step === 4){
+
+    const budget =
+      Number(document.getElementById("budget").value);
+
+    if(!budget || budget < 100){
+
+      showToast("Campaign budget must be at least ₹100.");
+
+      return false;
+
+    }
+
+  }
+
+
+  return true;
+
+}
+
+
+/* ================= AD METHOD ================= */
+
+function selectAdMethod(method){
+
+  adMethod = method;
+
+
+  document.getElementById("uploadMethod")
+    .classList.remove("selected");
+
+  document.getElementById("aiMethod")
+    .classList.remove("selected");
+
+
+  if(method === "upload"){
+
+    document.getElementById("uploadMethod")
+      .classList.add("selected");
+
+    document.getElementById("uploadArea")
+      .style.display = "block";
+
+    document.getElementById("aiArea")
+      .style.display = "none";
+
+  }
+
+
+  if(method === "ai"){
+
+    document.getElementById("aiMethod")
+      .classList.add("selected");
+
+    document.getElementById("uploadArea")
+      .style.display = "none";
+
+    document.getElementById("aiArea")
+      .style.display = "block";
+
+  }
+
+}
+
+
+/* ================= VIDEO UPLOAD ================= */
+
+document
+  .getElementById("videoInput")
+  .addEventListener("change", function(e){
+
+    const file = e.target.files[0];
+
+    if(!file) return;
+
+
+    if(!file.type.startsWith("video/")){
+
+      showToast("Please select a valid video file.");
+
+      return;
+
+    }
+
+
+    if(videoURL){
+
+      URL.revokeObjectURL(videoURL);
+
+    }
+
+
+    videoURL = URL.createObjectURL(file);
+
+
+    const video =
+      document.getElementById("previewVideo");
+
+    video.src = videoURL;
+
+
+    document.getElementById("videoName")
+      .textContent = file.name;
+
+
+    document.getElementById("videoPreview")
+      .style.display = "block";
+
+
+    video.onloadedmetadata = function(){
+
+      const duration =
+        Math.round(video.duration);
+
+      document.getElementById("videoDuration")
+        .textContent = duration + " sec";
+
+
+      if(duration < 10 || duration > 30){
+
+        showToast(
+          "Recommended ad length is 10–30 seconds."
+        );
+
+      }
+
+    };
+
+});
+
+
+/* ================= AI ================= */
+
+function generateAIAd(){
+
+  const prompt =
+    document.getElementById("aiPrompt").value.trim();
+
+  if(!prompt){
+
+    showToast("Describe your advertisement first.");
+
+    return;
+
+  }
+
+
+  const status =
+    document.getElementById("aiStatus");
+
+  status.style.display = "block";
+
+  status.textContent =
+    "AI Advertisement Studio is ready for API integration.";
+
+  showToast("AI ad request prepared.");
+
+}
+
+
+/* ================= TARGETING ================= */
+
+function selectTarget(type){
+
+  targetType = type;
+
+
+  document.querySelectorAll(".target-option")
+    .forEach(option=>{
+      option.classList.remove("selected");
+    });
+
+
+  if(type === "local"){
+
+    document.getElementById("localTarget")
+      .classList.add("selected");
+
+  }
+
+
+  if(type === "national"){
+
+    document.getElementById("nationalTarget")
+      .classList.add("selected");
+
+  }
+
+
+  if(type === "global"){
+
+    document.getElementById("globalTarget")
+      .classList.add("selected");
+
+  }
+
+}
+
+
+function updateRadius(){
+
+  const value =
+    document.getElementById("radius").value;
+
+  document.getElementById("radiusValue")
+    .textContent = value;
+
+}
+
+
+/* ================= INTERESTS ================= */
+
+function toggleInterest(element){
+
+  element.classList.toggle("active");
+
+}
+
+
+/* ================= BUDGET ================= */
+
+function calculateBudget(){
+
+  let cpm =
+    Number(document.getElementById("cpm").value);
+
+  let budget =
+    Number(document.getElementById("budget").value);
+
+
+  if(!cpm || cpm <= 0){
+    cpm = 100;
+  }
+
+  if(!budget || budget < 0){
+    budget = 0;
+  }
+
+
+  const impressions =
+    Math.floor((budget / cpm) * 1000);
+
+
+  document.getElementById("estimatedImpressions")
+    .textContent =
+    impressions.toLocaleString("en-IN");
+
+
+  document.getElementById("estimatedSpend")
+    .textContent =
+    budget.toLocaleString("en-IN");
+
+}
+
+
+/* ================= REVIEW ================= */
+
+function updateReview(){
+
+  document.getElementById("reviewCampaign")
+    .textContent =
+    document.getElementById("campaignName").value || "—";
+
+
+  document.getElementById("reviewBusiness")
+    .textContent =
+    document.getElementById("businessName").value || "—";
+
+
+  document.getElementById("reviewProduct")
+    .textContent =
+    document.getElementById("productName").value || "—";
+
+
+  document.getElementById("reviewCTA")
+    .textContent =
+    document.getElementById("cta").value;
+
+
+  let targetText = "";
+
+
+  if(targetType === "local"){
+
+    const city =
+      document.getElementById("city").value;
+
+    const state =
+      document.getElementById("state").value;
+
+    const pin =
+      document.getElementById("pin").value;
+
+    const radius =
+      document.getElementById("radius").value;
+
+
+    targetText =
+      "Local";
+
+    if(city){
+      targetText += " • " + city;
+    }
+
+    if(state){
+      targetText += ", " + state;
+    }
+
+    if(pin){
+      targetText += " • PIN " + pin;
+    }
+
+    targetText += " • " + radius + " km radius";
+
+  }
+
+
+  if(targetType === "national"){
+
+    targetText =
+      "National • " +
+      document.getElementById("country").value;
+
+  }
+
+
+  if(targetType === "global"){
+
+    targetText =
+      "International • " +
+      document.getElementById("country").value;
+
+  }
+
+
+  document.getElementById("reviewTarget")
+    .textContent = targetText;
+
+
+  const budget =
+    Number(document.getElementById("budget").value) || 0;
+
+
+  const cpm =
+    Number(document.getElementById("cpm").value) || 100;
+
+
+  const impressions =
+    Math.floor((budget / cpm) * 1000);
+
+
+  document.getElementById("reviewBudget")
+    .textContent =
+    budget.toLocaleString("en-IN");
+
+
+  document.getElementById("reviewImpressions")
+    .textContent =
+    impressions.toLocaleString("en-IN");
+
+
+  updateReviewVideo();
+
+}
+
+
+/* ================= REVIEW VIDEO ================= */
+
+function updateReviewVideo(){
+
+  const container =
+    document.getElementById("reviewVideoContainer");
+
+
+  if(videoURL){
+
+    container.innerHTML = `
+      <div class="review-video">
+        <video src="${videoURL}" controls></video>
+      </div>
+    `;
+
+    return;
+
+  }
+
+
+  if(adMethod === "ai"){
+
+    container.innerHTML = `
+      <div style="
+        background:#161616;
+        padding:35px;
+        text-align:center;
+        border-radius:12px;
+        color:#aaa;
+      ">
+        ✨ AI Advertisement
+        <br><br>
+        <small>
+          Video will be generated after AI API integration.
+        </small>
+      </div>
+    `;
+
+  }
+
+}
+
+
+/* ================= SUBMIT ================= */
+
+function submitCampaign(){
+
+  if(!validateStep(5)){
+    return;
+  }
+
+
+  /*
+    FRONTEND DEMO ONLY
+
+    Later this object will be sent to:
+    MiniTube Ads Worker → Supabase
+    and uploaded video → Cloudflare R2
+  */
+
+  const campaign = {
+
+    campaignName:
+      document.getElementById("campaignName").value,
+
+    businessName:
+      document.getElementById("businessName").value,
+
+    productName:
+      document.getElementById("productName").value,
+
+    adMessage:
+      document.getElementById("adMessage").value,
+
+    landingPage:
+      document.getElementById("landingPage").value,
+
+    cta:
+      document.getElementById("cta").value,
+
+    adMethod:
+      adMethod,
+
+    targetType:
+      targetType,
+
+    country:
+      document.getElementById("country").value,
+
+    state:
+      document.getElementById("state").value,
+
+    city:
+      document.getElementById("city").value,
+
+    pin:
+      document.getElementById("pin").value,
+
+    radius:
+      document.getElementById("radius").value,
+
+    cpm:
+      document.getElementById("cpm").value,
+
+    budget:
+      document.getElementById("budget").value,
+
+    status:
+      "Pending Review",
+
+    createdAt:
+      new Date().toISOString()
+
+  };
+
+
+  /* Save demo campaign locally */
+
+  localStorage.setItem(
+    "minitube_ads_last_campaign",
+    JSON.stringify(campaign)
+  );
+
+
+  document
+    .querySelector(".steps")
+    .style.display = "none";
+
+
+  document
+    .querySelector(".card")
+    .style.padding = "0";
+
+
+  document
+    .querySelectorAll(".step-page")
+    .forEach(page=>{
+      page.style.display = "none";
+    });
+
+
+  document
+    .getElementById("successPage")
+    .style.display = "block";
+
+
+  showToast("Campaign submitted.");
+
+}
+
+
+/* ================= TOAST ================= */
+
+function showToast(message){
+
+  const toast =
+    document.getElementById("toast");
+
+  toast.textContent = message;
+
+  toast.classList.add("show");
+
+
+  setTimeout(()=>{
+
+    toast.classList.remove("show");
+
+  },3000);
+
+}
+
+
+/* ================= INIT ================= */
+
+calculateBudget();
+
+updateRadius();
+
+</script>
+
+</body>
+</html>
