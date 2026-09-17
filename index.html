@@ -1,0 +1,2745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
+
+<meta
+  name="description"
+  content="MiniTube Ads — Promote your product to the right audience with simple, location-based video advertising."
+>
+
+<meta
+  name="theme-color"
+  content="#08090d"
+>
+
+<title>MiniTube Ads — Reach the Right Audience</title>
+
+<style>
+
+/* =========================================================
+   MINITUBE ADS
+   GLOBAL
+========================================================= */
+
+:root{
+  --bg:#08090d;
+  --bg2:#0d0f15;
+  --card:#11141c;
+  --card2:#151923;
+  --border:rgba(255,255,255,.09);
+
+  --text:#f5f7fb;
+  --muted:#9ba3b4;
+
+  --red:#ff0033;
+  --red2:#ff3159;
+
+  --green:#32d583;
+  --yellow:#ffca3a;
+
+  --max:1180px;
+  --radius:20px;
+}
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Arial,
+    sans-serif;
+
+  background:
+    radial-gradient(
+      circle at 50% -20%,
+      rgba(255,0,51,.14),
+      transparent 35%
+    ),
+    var(--bg);
+
+  color:var(--text);
+  line-height:1.6;
+  overflow-x:hidden;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+button{
+  font:inherit;
+}
+
+.container{
+  width:min(var(--max), calc(100% - 40px));
+  margin:auto;
+}
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+.navbar{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  z-index:1000;
+
+  height:72px;
+
+  background:rgba(8,9,13,.78);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+
+.nav-inner{
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+
+  font-size:20px;
+  font-weight:800;
+  letter-spacing:-.5px;
+}
+
+.logo-icon{
+  width:34px;
+  height:24px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  background:var(--red);
+  border-radius:7px;
+
+  font-size:14px;
+  color:#fff;
+
+  box-shadow:
+    0 0 25px rgba(255,0,51,.25);
+}
+
+.logo span{
+  color:var(--red);
+}
+
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:28px;
+
+  color:#c7ccd7;
+  font-size:14px;
+}
+
+.nav-links a{
+  transition:.2s;
+}
+
+.nav-links a:hover{
+  color:#fff;
+}
+
+.nav-actions{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.btn{
+  border:0;
+  cursor:pointer;
+
+  border-radius:11px;
+
+  padding:11px 18px;
+
+  font-size:14px;
+  font-weight:700;
+
+  transition:
+    transform .2s,
+    box-shadow .2s,
+    background .2s;
+}
+
+.btn:hover{
+  transform:translateY(-2px);
+}
+
+.btn-primary{
+  color:#fff;
+  background:var(--red);
+
+  box-shadow:
+    0 8px 30px rgba(255,0,51,.2);
+}
+
+.btn-primary:hover{
+  background:var(--red2);
+
+  box-shadow:
+    0 12px 35px rgba(255,0,51,.3);
+}
+
+.btn-secondary{
+  color:#fff;
+  background:rgba(255,255,255,.06);
+  border:1px solid var(--border);
+}
+
+.btn-large{
+  padding:14px 23px;
+  font-size:15px;
+}
+
+.mobile-menu{
+  display:none;
+
+  width:42px;
+  height:42px;
+
+  border-radius:10px;
+  border:1px solid var(--border);
+
+  background:rgba(255,255,255,.05);
+  color:#fff;
+
+  cursor:pointer;
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+  min-height:760px;
+
+  display:flex;
+  align-items:center;
+
+  padding-top:100px;
+
+  position:relative;
+}
+
+.hero::before{
+  content:"";
+
+  position:absolute;
+
+  width:500px;
+  height:500px;
+
+  left:50%;
+  top:5%;
+
+  transform:translateX(-50%);
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(255,0,51,.12),
+      transparent 70%
+    );
+
+  pointer-events:none;
+}
+
+.hero-content{
+  text-align:center;
+  max-width:900px;
+  margin:auto;
+
+  position:relative;
+  z-index:2;
+}
+
+.badge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+
+  padding:7px 13px;
+
+  border:1px solid rgba(255,0,51,.25);
+
+  border-radius:100px;
+
+  background:rgba(255,0,51,.07);
+
+  color:#ff6b88;
+
+  font-size:12px;
+  font-weight:700;
+
+  margin-bottom:25px;
+}
+
+.badge-dot{
+  width:7px;
+  height:7px;
+
+  background:var(--red);
+
+  border-radius:50%;
+
+  box-shadow:0 0 10px var(--red);
+}
+
+.hero h1{
+  font-size:
+    clamp(42px, 7vw, 78px);
+
+  line-height:1.02;
+
+  letter-spacing:-4px;
+
+  font-weight:900;
+
+  margin-bottom:25px;
+}
+
+.hero h1 span{
+  color:var(--red);
+}
+
+.hero p{
+  max-width:690px;
+  margin:0 auto 32px;
+
+  color:var(--muted);
+
+  font-size:
+    clamp(16px, 2vw, 19px);
+}
+
+.hero-actions{
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+/* =========================================================
+   HERO STATS
+========================================================= */
+
+.hero-stats{
+  margin:60px auto 0;
+
+  max-width:720px;
+
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+
+  border:1px solid var(--border);
+
+  background:rgba(255,255,255,.025);
+
+  border-radius:18px;
+
+  overflow:hidden;
+}
+
+.stat{
+  padding:20px;
+  text-align:center;
+}
+
+.stat + .stat{
+  border-left:1px solid var(--border);
+}
+
+.stat strong{
+  display:block;
+
+  font-size:24px;
+  font-weight:800;
+}
+
+.stat small{
+  color:var(--muted);
+  font-size:12px;
+}
+
+/* =========================================================
+   SECTIONS
+========================================================= */
+
+section{
+  padding:100px 0;
+}
+
+.section-heading{
+  max-width:700px;
+  margin:0 auto 55px;
+
+  text-align:center;
+}
+
+.eyebrow{
+  color:var(--red);
+
+  font-size:12px;
+  font-weight:800;
+
+  text-transform:uppercase;
+  letter-spacing:1.5px;
+
+  margin-bottom:10px;
+}
+
+.section-heading h2{
+  font-size:
+    clamp(30px, 5vw, 48px);
+
+  line-height:1.1;
+
+  letter-spacing:-2px;
+
+  margin-bottom:15px;
+}
+
+.section-heading p{
+  color:var(--muted);
+}
+
+/* =========================================================
+   FEATURES
+========================================================= */
+
+.features{
+  background:
+    linear-gradient(
+      180deg,
+      transparent,
+      rgba(255,255,255,.015),
+      transparent
+    );
+}
+
+.feature-grid{
+  display:grid;
+
+  grid-template-columns:
+    repeat(3,1fr);
+
+  gap:18px;
+}
+
+.feature-card{
+  padding:28px;
+
+  border:1px solid var(--border);
+
+  border-radius:var(--radius);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.04),
+      rgba(255,255,255,.015)
+    );
+
+  transition:
+    transform .25s,
+    border-color .25s;
+}
+
+.feature-card:hover{
+  transform:translateY(-5px);
+
+  border-color:
+    rgba(255,0,51,.3);
+}
+
+.feature-icon{
+  width:48px;
+  height:48px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  border-radius:13px;
+
+  background:rgba(255,0,51,.1);
+
+  font-size:22px;
+
+  margin-bottom:20px;
+}
+
+.feature-card h3{
+  font-size:18px;
+  margin-bottom:8px;
+}
+
+.feature-card p{
+  color:var(--muted);
+  font-size:14px;
+}
+
+/* =========================================================
+   HOW IT WORKS
+========================================================= */
+
+.steps{
+  display:grid;
+
+  grid-template-columns:
+    repeat(4,1fr);
+
+  gap:15px;
+
+  position:relative;
+}
+
+.step{
+  position:relative;
+
+  padding:28px 22px;
+
+  border:1px solid var(--border);
+
+  border-radius:18px;
+
+  background:var(--card);
+}
+
+.step-number{
+  width:36px;
+  height:36px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  border-radius:10px;
+
+  background:var(--red);
+
+  font-weight:800;
+
+  margin-bottom:20px;
+}
+
+.step h3{
+  margin-bottom:7px;
+}
+
+.step p{
+  color:var(--muted);
+  font-size:13px;
+}
+
+/* =========================================================
+   TARGETING
+========================================================= */
+
+.target-grid{
+  display:grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap:22px;
+
+  align-items:stretch;
+}
+
+.target-card{
+  min-height:440px;
+
+  padding:35px;
+
+  border-radius:24px;
+
+  border:1px solid var(--border);
+
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(255,0,51,.09),
+      transparent 35%
+    ),
+    var(--card);
+}
+
+.target-card h3{
+  font-size:25px;
+  margin-bottom:10px;
+}
+
+.target-card > p{
+  color:var(--muted);
+  margin-bottom:28px;
+}
+
+.location-box{
+  padding:20px;
+
+  border:1px solid var(--border);
+
+  background:rgba(255,255,255,.025);
+
+  border-radius:16px;
+
+  margin-bottom:15px;
+}
+
+.location-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  margin-bottom:13px;
+}
+
+.location-name{
+  display:flex;
+  align-items:center;
+  gap:10px;
+
+  font-weight:700;
+}
+
+.pin{
+  width:30px;
+  height:30px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  border-radius:9px;
+
+  background:rgba(255,0,51,.1);
+}
+
+.range{
+  height:7px;
+
+  background:#242936;
+
+  border-radius:10px;
+
+  overflow:hidden;
+}
+
+.range span{
+  display:block;
+
+  width:68%;
+  height:100%;
+
+  background:var(--red);
+
+  border-radius:10px;
+}
+
+.range-labels{
+  display:flex;
+  justify-content:space-between;
+
+  color:#747c8d;
+
+  font-size:11px;
+
+  margin-top:7px;
+}
+
+.chips{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+
+.chip{
+  padding:7px 11px;
+
+  border-radius:9px;
+
+  background:rgba(255,255,255,.05);
+
+  border:1px solid var(--border);
+
+  color:#c9ced8;
+
+  font-size:12px;
+}
+
+/* =========================================================
+   AI AD
+========================================================= */
+
+.ai-section{
+  background:
+    radial-gradient(
+      circle at 50% 30%,
+      rgba(255,0,51,.08),
+      transparent 45%
+    );
+}
+
+.ai-box{
+  display:grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap:25px;
+
+  padding:25px;
+
+  border:1px solid var(--border);
+
+  border-radius:25px;
+
+  background:rgba(255,255,255,.025);
+}
+
+.ai-form{
+  padding:20px;
+}
+
+.ai-form h3{
+  font-size:25px;
+  margin-bottom:10px;
+}
+
+.ai-form p{
+  color:var(--muted);
+  font-size:14px;
+  margin-bottom:25px;
+}
+
+.fake-input{
+  margin-bottom:13px;
+
+  padding:14px 15px;
+
+  border:1px solid var(--border);
+
+  border-radius:11px;
+
+  background:#0b0e14;
+
+  color:#8991a2;
+
+  font-size:13px;
+}
+
+.fake-input.large{
+  min-height:110px;
+}
+
+.ai-preview{
+  min-height:390px;
+
+  border-radius:18px;
+
+  overflow:hidden;
+
+  position:relative;
+
+  background:
+    linear-gradient(
+      145deg,
+      #241016,
+      #10131b 55%,
+      #161a22
+    );
+
+  border:1px solid var(--border);
+}
+
+.video-screen{
+  position:absolute;
+
+  inset:0;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-size:52px;
+}
+
+.video-overlay{
+  position:absolute;
+
+  left:18px;
+  right:18px;
+  bottom:18px;
+
+  padding:15px;
+
+  border-radius:13px;
+
+  background:rgba(0,0,0,.65);
+
+  backdrop-filter:blur(10px);
+}
+
+.ad-label{
+  color:#aaa;
+
+  font-size:10px;
+
+  text-transform:uppercase;
+
+  margin-bottom:4px;
+}
+
+.video-overlay strong{
+  font-size:17px;
+}
+
+.ai-badge{
+  position:absolute;
+
+  top:15px;
+  right:15px;
+
+  padding:6px 10px;
+
+  background:rgba(0,0,0,.55);
+
+  border:1px solid rgba(255,255,255,.1);
+
+  border-radius:8px;
+
+  font-size:11px;
+}
+
+/* =========================================================
+   PRICING
+========================================================= */
+
+.pricing-card{
+  max-width:850px;
+  margin:auto;
+
+  padding:38px;
+
+  border:1px solid rgba(255,0,51,.22);
+
+  border-radius:25px;
+
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(255,0,51,.12),
+      transparent 40%
+    ),
+    var(--card);
+
+  text-align:center;
+}
+
+.price{
+  display:flex;
+
+  justify-content:center;
+  align-items:baseline;
+
+  gap:8px;
+
+  margin:20px 0 8px;
+}
+
+.price strong{
+  font-size:56px;
+  letter-spacing:-3px;
+}
+
+.price span{
+  color:var(--muted);
+}
+
+.price-note{
+  color:var(--muted);
+  font-size:13px;
+  margin-bottom:28px;
+}
+
+.price-features{
+  display:grid;
+
+  grid-template-columns:
+    repeat(2,1fr);
+
+  gap:10px;
+
+  text-align:left;
+
+  max-width:600px;
+
+  margin:0 auto 28px;
+}
+
+.price-feature{
+  color:#c6cbd5;
+  font-size:13px;
+}
+
+.price-feature::before{
+  content:"✓";
+
+  color:var(--green);
+
+  font-weight:bold;
+
+  margin-right:8px;
+}
+
+/* =========================================================
+   ANALYTICS
+========================================================= */
+
+.analytics{
+  display:grid;
+
+  grid-template-columns:
+    1fr 1.4fr;
+
+  gap:20px;
+}
+
+.earnings-card,
+.dashboard-card{
+  padding:28px;
+
+  border:1px solid var(--border);
+
+  border-radius:22px;
+
+  background:var(--card);
+}
+
+.earnings-card h3,
+.dashboard-card h3{
+  margin-bottom:20px;
+}
+
+.earning-number{
+  font-size:43px;
+
+  font-weight:850;
+
+  margin-bottom:4px;
+}
+
+.positive{
+  color:var(--green);
+  font-size:13px;
+}
+
+.mini-bars{
+  height:150px;
+
+  display:flex;
+
+  align-items:flex-end;
+
+  gap:8px;
+
+  margin-top:25px;
+}
+
+.bar{
+  flex:1;
+
+  border-radius:5px 5px 0 0;
+
+  background:
+    linear-gradient(
+      to top,
+      var(--red),
+      #ff5275
+    );
+
+  opacity:.75;
+}
+
+.dashboard-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  margin-bottom:20px;
+}
+
+.status{
+  padding:5px 9px;
+
+  border-radius:8px;
+
+  color:var(--green);
+
+  background:rgba(50,213,131,.09);
+
+  font-size:11px;
+}
+
+.metric-grid{
+  display:grid;
+
+  grid-template-columns:
+    repeat(3,1fr);
+
+  gap:10px;
+}
+
+.metric{
+  padding:15px;
+
+  border-radius:12px;
+
+  background:rgba(255,255,255,.035);
+}
+
+.metric small{
+  color:#7f8797;
+
+  display:block;
+
+  margin-bottom:5px;
+}
+
+.metric strong{
+  font-size:18px;
+}
+
+/* =========================================================
+   CTA
+========================================================= */
+
+.final-cta{
+  padding-bottom:120px;
+}
+
+.cta{
+  padding:65px 30px;
+
+  text-align:center;
+
+  border-radius:28px;
+
+  border:1px solid rgba(255,0,51,.2);
+
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(255,0,51,.14),
+      transparent 55%
+    ),
+    #0d1017;
+}
+
+.cta h2{
+  font-size:
+    clamp(32px,5vw,52px);
+
+  letter-spacing:-2px;
+
+  line-height:1.1;
+
+  margin-bottom:15px;
+}
+
+.cta p{
+  color:var(--muted);
+
+  max-width:600px;
+
+  margin:0 auto 28px;
+}
+
+/* =========================================================
+   FAQ
+========================================================= */
+
+.faq{
+  max-width:800px;
+  margin:auto;
+}
+
+.faq-item{
+  border-bottom:1px solid var(--border);
+}
+
+.faq-question{
+  width:100%;
+
+  padding:20px 0;
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  border:0;
+  background:none;
+
+  color:#fff;
+
+  cursor:pointer;
+
+  text-align:left;
+
+  font-weight:700;
+}
+
+.faq-icon{
+  color:var(--red);
+  font-size:22px;
+  transition:.2s;
+}
+
+.faq-answer{
+  max-height:0;
+  overflow:hidden;
+
+  color:var(--muted);
+
+  font-size:14px;
+
+  transition:max-height .3s ease;
+}
+
+.faq-answer p{
+  padding:0 0 20px;
+}
+
+.faq-item.active .faq-answer{
+  max-height:200px;
+}
+
+.faq-item.active .faq-icon{
+  transform:rotate(45deg);
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+  border-top:1px solid var(--border);
+
+  padding:50px 0 30px;
+
+  background:#06070a;
+}
+
+.footer-grid{
+  display:grid;
+
+  grid-template-columns:
+    2fr 1fr 1fr 1fr;
+
+  gap:35px;
+
+  padding-bottom:40px;
+}
+
+.footer-brand p{
+  max-width:350px;
+
+  color:#777f90;
+
+  font-size:13px;
+
+  margin-top:15px;
+}
+
+.footer-column h4{
+  margin-bottom:13px;
+
+  font-size:13px;
+}
+
+.footer-column a{
+  display:block;
+
+  color:#777f90;
+
+  font-size:13px;
+
+  margin:8px 0;
+
+  transition:.2s;
+}
+
+.footer-column a:hover{
+  color:#fff;
+}
+
+.footer-bottom{
+  padding-top:25px;
+
+  border-top:1px solid var(--border);
+
+  display:flex;
+  justify-content:space-between;
+
+  color:#626a79;
+
+  font-size:12px;
+}
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+.toast{
+  position:fixed;
+
+  right:20px;
+  bottom:20px;
+
+  z-index:2000;
+
+  padding:13px 16px;
+
+  background:#151923;
+
+  border:1px solid var(--border);
+
+  border-radius:12px;
+
+  color:#fff;
+
+  font-size:13px;
+
+  box-shadow:0 15px 50px rgba(0,0,0,.4);
+
+  transform:translateY(120px);
+
+  opacity:0;
+
+  transition:.3s;
+}
+
+.toast.show{
+  transform:translateY(0);
+  opacity:1;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:900px){
+
+  .nav-links{
+    display:none;
+  }
+
+  .mobile-menu{
+    display:block;
+  }
+
+  .nav-actions .btn-secondary{
+    display:none;
+  }
+
+  .feature-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .steps{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .target-grid,
+  .ai-box,
+  .analytics{
+    grid-template-columns:1fr;
+  }
+
+  .footer-grid{
+    grid-template-columns:
+      1fr 1fr;
+  }
+
+}
+
+@media(max-width:600px){
+
+  .container{
+    width:min(
+      var(--max),
+      calc(100% - 28px)
+    );
+  }
+
+  .navbar{
+    height:64px;
+  }
+
+  .hero{
+    min-height:680px;
+    padding-top:90px;
+  }
+
+  .hero h1{
+    letter-spacing:-2.5px;
+  }
+
+  .hero-stats{
+    grid-template-columns:1fr;
+  }
+
+  .stat + .stat{
+    border-left:0;
+    border-top:1px solid var(--border);
+  }
+
+  section{
+    padding:75px 0;
+  }
+
+  .feature-grid,
+  .steps{
+    grid-template-columns:1fr;
+  }
+
+  .target-card{
+    padding:25px;
+  }
+
+  .price-features{
+    grid-template-columns:1fr;
+  }
+
+  .metric-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .footer-grid{
+    grid-template-columns:1fr;
+  }
+
+  .footer-bottom{
+    flex-direction:column;
+    gap:8px;
+  }
+
+  .ai-preview{
+    min-height:300px;
+  }
+
+  .pricing-card{
+    padding:28px 20px;
+  }
+
+}
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media(prefers-reduced-motion:reduce){
+
+  *,
+  *::before,
+  *::after{
+    scroll-behavior:auto !important;
+    transition:none !important;
+    animation:none !important;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- =======================================================
+     NAVIGATION
+======================================================= -->
+
+<header class="navbar">
+
+  <div class="container nav-inner">
+
+    <a href="#" class="logo">
+
+      <div class="logo-icon">▶</div>
+
+      MiniTube <span>Ads</span>
+
+    </a>
+
+    <nav class="nav-links">
+
+      <a href="#how">How it works</a>
+      <a href="#targeting">Targeting</a>
+      <a href="#ai">AI Ads</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+
+    </nav>
+
+    <div class="nav-actions">
+
+      <button
+        class="btn btn-secondary"
+        onclick="showToast('Advertiser login will be connected next.')"
+      >
+        Login
+      </button>
+
+      <button
+        class="btn btn-primary"
+        onclick="startCampaign()"
+      >
+        Start Advertising
+      </button>
+
+      <button
+        class="mobile-menu"
+        onclick="toggleMobileMenu()"
+        aria-label="Open menu"
+      >
+        ☰
+      </button>
+
+    </div>
+
+  </div>
+
+</header>
+
+
+<!-- =======================================================
+     HERO
+======================================================= -->
+
+<main>
+
+<section class="hero">
+
+  <div class="container">
+
+    <div class="hero-content">
+
+      <div class="badge">
+
+        <span class="badge-dot"></span>
+
+        Video advertising made simple
+
+      </div>
+
+      <h1>
+
+        Put your product<br>
+
+        in front of the <span>right people.</span>
+
+      </h1>
+
+      <p>
+
+        Create, target and launch short video advertisements
+        on MiniTube. Reach customers locally, nationally or
+        internationally — with a simple pay-per-impression model.
+
+      </p>
+
+      <div class="hero-actions">
+
+        <button
+          class="btn btn-primary btn-large"
+          onclick="startCampaign()"
+        >
+          Create Your First Campaign →
+        </button>
+
+        <a
+          href="#how"
+          class="btn btn-secondary btn-large"
+        >
+          See How It Works
+        </a>
+
+      </div>
+
+
+      <div class="hero-stats">
+
+        <div class="stat">
+
+          <strong>₹100</strong>
+
+          <small>Starting CPM</small>
+
+        </div>
+
+        <div class="stat">
+
+          <strong>10–30s</strong>
+
+          <small>Short video ads</small>
+
+        </div>
+
+        <div class="stat">
+
+          <strong>Local → Global</strong>
+
+          <small>Audience targeting</small>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =======================================================
+     FEATURES
+======================================================= -->
+
+<section class="features">
+
+  <div class="container">
+
+    <div class="section-heading">
+
+      <div class="eyebrow">One platform</div>
+
+      <h2>
+        Everything you need to advertise
+      </h2>
+
+      <p>
+        From a local restaurant to a global product,
+        build campaigns without complicated advertising tools.
+      </p>
+
+    </div>
+
+
+    <div class="feature-grid">
+
+
+      <div class="feature-card">
+
+        <div class="feature-icon">
+          📍
+        </div>
+
+        <h3>
+          Location Targeting
+        </h3>
+
+        <p>
+          Reach people around a specific city, area,
+          PIN code or radius. Perfect for local businesses.
+        </p>
+
+      </div>
+
+
+      <div class="feature-card">
+
+        <div class="feature-icon">
+          🎯
+        </div>
+
+        <h3>
+          Audience Control
+        </h3>
+
+        <p>
+          Choose where your campaign should appear
+          and define the audience you want to reach.
+        </p>
+
+      </div>
+
+
+      <div class="feature-card">
+
+        <div class="feature-icon">
+          🎬
+        </div>
+
+        <h3>
+          10–30 Second Ads
+        </h3>
+
+        <p>
+          Upload your own short video advertisement
+          and preview it before launching.
+        </p>
+
+      </div>
+
+
+      <div class="feature-card">
+
+        <div class="feature-icon">
+          ✨
+        </div>
+
+        <h3>
+          AI Ad Creation
+        </h3>
+
+        <p>
+          Don't have an advertisement? Describe your
+          product and let AI help create one.
+        </p>
+
+      </div>
+
+
+      <div class="feature-card">
+
+        <div class="feature-icon">
+          📊
+        </div>
+
+        <h3>
+          Campaign Analytics
+        </h3>
+
+        <p>
+          Track impressions, engagement and campaign
+          performance from your dashboard.
+        </p>
+
+      </div>
+
+
+      <div class="feature-card">
+
+        <div class="feature-icon">
+          💰
+        </div>
+
+        <h3>
+          Creator Revenue
+        </h3>
+
+        <p>
+          A portion of advertising revenue can be
+          shared with eligible MiniTube creators.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =======================================================
+     HOW IT WORKS
+======================================================= -->
+
+<section id="how">
+
+  <div class="container">
+
+    <div class="section-heading">
+
+      <div class="eyebrow">Simple process</div>
+
+      <h2>
+        Launch an advertisement in minutes
+      </h2>
+
+      <p>
+        No complicated media buying process.
+        Choose your audience, set your budget and launch.
+      </p>
+
+    </div>
+
+
+    <div class="steps">
+
+
+      <div class="step">
+
+        <div class="step-number">1</div>
+
+        <h3>
+          Create your ad
+        </h3>
+
+        <p>
+          Upload a 10–30 second advertisement
+          or create one using our future AI tools.
+        </p>
+
+      </div>
+
+
+      <div class="step">
+
+        <div class="step-number">2</div>
+
+        <h3>
+          Choose audience
+        </h3>
+
+        <p>
+          Select your location, radius and available
+          audience targeting options.
+        </p>
+
+      </div>
+
+
+      <div class="step">
+
+        <div class="step-number">3</div>
+
+        <h3>
+          Set your budget
+        </h3>
+
+        <p>
+          Start with a simple impression-based budget
+          and see your estimated campaign reach.
+        </p>
+
+      </div>
+
+
+      <div class="step">
+
+        <div class="step-number">4</div>
+
+        <h3>
+          Launch & track
+        </h3>
+
+        <p>
+          Once approved, your ad can start appearing
+          to matching MiniTube viewers.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =======================================================
+     TARGETING
+======================================================= -->
+
+<section id="targeting">
+
+  <div class="container">
+
+    <div class="section-heading">
+
+      <div class="eyebrow">Smart targeting</div>
+
+      <h2>
+        From one neighbourhood to the whole world
+      </h2>
+
+      <p>
+        Your campaign should reach the people who can
+        actually become your customers.
+      </p>
+
+    </div>
+
+
+    <div class="target-grid">
+
+
+      <div class="target-card">
+
+        <h3>
+          Local businesses
+        </h3>
+
+        <p>
+          Ideal for restaurants, resorts, shops,
+          coaching centres, salons and local services.
+        </p>
+
+
+        <div class="location-box">
+
+          <div class="location-row">
+
+            <div class="location-name">
+
+              <div class="pin">📍</div>
+
+              Jamshedpur
+
+            </div>
+
+            <strong>50 km</strong>
+
+          </div>
+
+          <div class="range">
+            <span></span>
+          </div>
+
+          <div class="range-labels">
+
+            <span>1 km</span>
+            <span>50 km</span>
+            <span>100 km</span>
+
+          </div>
+
+        </div>
+
+
+        <div class="chips">
+
+          <span class="chip">Travel</span>
+          <span class="chip">Food</span>
+          <span class="chip">Families</span>
+          <span class="chip">Local customers</span>
+
+        </div>
+
+      </div>
+
+
+      <div class="target-card">
+
+        <h3>
+          National & global brands
+        </h3>
+
+        <p>
+          Expand your reach across India or select
+          multiple countries for a broader campaign.
+        </p>
+
+
+        <div class="location-box">
+
+          <div class="location-row">
+
+            <div class="location-name">
+
+              <div class="pin">🌎</div>
+
+              India
+
+            </div>
+
+            <strong>Nationwide</strong>
+
+          </div>
+
+          <div class="range">
+            <span style="width:92%"></span>
+          </div>
+
+          <div class="range-labels">
+
+            <span>Local</span>
+            <span>National</span>
+            <span>Global</span>
+
+          </div>
+
+        </div>
+
+
+        <div class="chips">
+
+          <span class="chip">India</span>
+          <span class="chip">USA</span>
+          <span class="chip">UAE</span>
+          <span class="chip">UK</span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =======================================================
+     AI ADS
+======================================================= -->
+
+<section class="ai-section" id="ai">
+
+  <div class="container">
+
+    <div class="section-heading">
+
+      <div class="eyebrow">AI powered</div>
+
+      <h2>
+        No advertisement? Create one.
+      </h2>
+
+      <p>
+        Tell us about your product and describe the style
+        you want. AI-assisted advertisement creation can
+        help turn your idea into a short video.
+      </p>
+
+    </div>
+
+
+    <div class="ai-box">
+
+
+      <div class="ai-form">
+
+        <h3>
+          AI Advertisement Studio
+        </h3>
+
+        <p>
+          A simple interface for businesses that don't
+          already have a professional video advertisement.
+        </p>
+
+
+        <div class="fake-input">
+          Product: ABC Resort
+        </div>
+
+        <div class="fake-input">
+          Type: Luxury Resort
+        </div>
+
+        <div class="fake-input">
+          Duration: 15 seconds
+        </div>
+
+        <div class="fake-input">
+          Language: Hindi
+        </div>
+
+        <div class="fake-input large">
+          Describe your advertisement...<br><br>
+          Show a beautiful luxury resort,
+          swimming pool, rooms and sunset dinner.
+        </div>
+
+
+        <button
+          class="btn btn-primary"
+          onclick="showToast('AI Advertisement Studio will be connected in the next phase.')"
+        >
+          ✨ Generate Advertisement
+        </button>
+
+      </div>
+
+
+      <div class="ai-preview">
+
+        <div class="video-screen">
+          ▶
+        </div>
+
+        <div class="ai-badge">
+          AI Preview
+        </div>
+
+        <div class="video-overlay">
+
+          <div class="ad-label">
+            Advertisement
+          </div>
+
+          <strong>
+            ABC Resort
+          </strong>
+
+          <div
+            style="
+              color:#aaa;
+              font-size:11px;
+              margin-top:3px;
+            "
+          >
+            Experience something beautiful.
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =======================================================
+     PRICING
+======================================================= -->
+
+<section id="pricing">
+
+  <div class="container">
+
+    <div class="section-heading">
+
+      <div class="eyebrow">Simple pricing</div>
+
+      <h2>
+        Start with impressions
+      </h2>
+
+      <p>
+        A straightforward model makes it easier for
+        businesses to understand what they are paying for.
+      </p>
+
+    </div>
+
+
+    <div class="pricing-card">
+
+      <div class="eyebrow">
+        Example starting rate
+      </div>
+
+      <div class="price">
+
+        <strong>₹100</strong>
+
+        <span>/ 1,000 impressions</span>
+
+      </div>
+
+      <div class="price-note">
+        Final campaign pricing may vary by targeting,
+        placement and future campaign options.
+      </div>
+
+
+      <div class="price-features">
+
+        <div class="price-feature">
+          10–30 second video advertisements
+        </div>
+
+        <div class="price-feature">
+          Location-based targeting
+        </div>
+
+        <div class="price-feature">
+          Campaign dashboard
+        </div>
+
+        <div class="price-feature">
+          Impression reporting
+        </div>
+
+        <div class="price-feature">
+          Local and national campaigns
+        </div>
+
+        <div class="price-feature">
+          AI advertisement option planned
+        </div>
+
+      </div>
+
+
+      <button
+        class="btn btn-primary btn-large"
+        onclick="startCampaign()"
+      >
+        Start a Campaign
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =======================================================
+     ANALYTICS
+======================================================= -->
+
+<section>
+
+  <div class="container">
+
+    <div class="section-heading">
+
+      <div class="eyebrow">Built for transparency</div>
+
+      <h2>
+        See where your advertising budget goes
+      </h2>
+
+      <p>
+        Advertisers get campaign analytics while eligible
+        creators can see their advertising earnings.
+      </p>
+
+    </div>
+
+
+    <div class="analytics">
+
+
+      <div class="earnings-card">
+
+        <h3>
+          Creator earnings
+        </h3>
+
+        <div class="earning-number">
+          ₹842
+        </div>
+
+        <div class="positive">
+          ↑ Estimated monthly earnings
+        </div>
+
+
+        <div class="mini-bars">
+
+          <div class="bar" style="height:35%"></div>
+          <div class="bar" style="height:50%"></div>
+          <div class="bar" style="height:43%"></div>
+          <div class="bar" style="height:70%"></div>
+          <div class="bar" style="height:55%"></div>
+          <div class="bar" style="height:83%"></div>
+          <div class="bar" style="height:65%"></div>
+          <div class="bar" style="height:94%"></div>
+
+        </div>
+
+      </div>
+
+
+      <div class="dashboard-card">
+
+        <div class="dashboard-top">
+
+          <h3>
+            Campaign overview
+          </h3>
+
+          <span class="status">
+            ● ACTIVE
+          </span>
+
+        </div>
+
+
+        <div class="metric-grid">
+
+          <div class="metric">
+
+            <small>
+              Impressions
+            </small>
+
+            <strong>
+              48,291
+            </strong>
+
+          </div>
+
+
+          <div class="metric">
+
+            <small>
+              Completed
+            </small>
+
+            <strong>
+              41,203
+            </strong>
+
+          </div>
+
+
+          <div class="metric">
+
+            <small>
+              Clicks
+            </small>
+
+            <strong>
+              1,482
+            </strong>
+
+          </div>
+
+
+          <div class="metric">
+
+            <small>
+              Location
+            </small>
+
+            <strong>
+              50 km
+            </strong>
+
+          </div>
+
+
+          <div class="metric">
+
+            <small>
+              Budget
+            </small>
+
+            <strong>
+              ₹5,000
+            </strong>
+
+          </div>
+
+
+          <div class="metric">
+
+            <small>
+              Status
+            </small>
+
+            <strong>
+              Active
+            </strong>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =======================================================
+     FINAL CTA
+======================================================= -->
+
+<section class="final-cta">
+
+  <div class="container">
+
+    <div class="cta">
+
+      <div class="eyebrow">
+        Ready to grow?
+      </div>
+
+      <h2>
+        Your next customer could<br>
+        be watching MiniTube.
+      </h2>
+
+      <p>
+        Create a campaign, choose your audience and
+        start building your reach.
+      </p>
+
+      <button
+        class="btn btn-primary btn-large"
+        onclick="startCampaign()"
+      >
+        Create Campaign →
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =======================================================
+     FAQ
+======================================================= -->
+
+<section id="faq">
+
+  <div class="container">
+
+    <div class="section-heading">
+
+      <div class="eyebrow">Questions</div>
+
+      <h2>
+        Frequently asked questions
+      </h2>
+
+    </div>
+
+
+    <div class="faq">
+
+
+      <div class="faq-item">
+
+        <button
+          class="faq-question"
+          onclick="toggleFaq(this)"
+        >
+
+          How much does advertising cost?
+
+          <span class="faq-icon">+</span>
+
+        </button>
+
+        <div class="faq-answer">
+
+          <p>
+            The initial model is planned around ₹100 per
+            1,000 valid ad impressions. Campaign pricing
+            can evolve as targeting and placement options
+            are introduced.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="faq-item">
+
+        <button
+          class="faq-question"
+          onclick="toggleFaq(this)"
+        >
+
+          Can a small local business advertise?
+
+          <span class="faq-icon">+</span>
+
+        </button>
+
+        <div class="faq-answer">
+
+          <p>
+            Yes. Local businesses can be able to target
+            a selected area or radius, making the platform
+            suitable for restaurants, shops, resorts,
+            services and other local businesses.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="faq-item">
+
+        <button
+          class="faq-question"
+          onclick="toggleFaq(this)"
+        >
+
+          Can I upload my own advertisement?
+
+          <span class="faq-icon">+</span>
+
+        </button>
+
+        <div class="faq-answer">
+
+          <p>
+            Yes. The planned campaign system supports
+            advertiser-uploaded short video advertisements.
+            Advertisements will go through platform checks
+            before becoming active.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="faq-item">
+
+        <button
+          class="faq-question"
+          onclick="toggleFaq(this)"
+        >
+
+          What if I don't have an advertisement?
+
+          <span class="faq-icon">+</span>
+
+        </button>
+
+        <div class="faq-answer">
+
+          <p>
+            MiniTube Ads is planned to include an AI
+            advertisement creation option where advertisers
+            can provide product information and a creative
+            description to generate an advertisement.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="faq-item">
+
+        <button
+          class="faq-question"
+          onclick="toggleFaq(this)"
+        >
+
+          How do creators earn from advertisements?
+
+          <span class="faq-icon">+</span>
+
+        </button>
+
+        <div class="faq-answer">
+
+          <p>
+            The planned business model allocates a portion
+            of eligible advertising revenue to creators based
+            on verified advertising impressions on their
+            content.
+          </p>
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+</main>
+
+
+<!-- =======================================================
+     FOOTER
+======================================================= -->
+
+<footer>
+
+  <div class="container">
+
+    <div class="footer-grid">
+
+
+      <div class="footer-brand">
+
+        <a href="#" class="logo">
+
+          <div class="logo-icon">▶</div>
+
+          MiniTube <span>Ads</span>
+
+        </a>
+
+        <p>
+          A simple video advertising platform designed
+          to connect products with relevant audiences
+          through MiniTube.
+        </p>
+
+      </div>
+
+
+      <div class="footer-column">
+
+        <h4>
+          Platform
+        </h4>
+
+        <a href="#how">How it works</a>
+        <a href="#targeting">Targeting</a>
+        <a href="#ai">AI Ads</a>
+        <a href="#pricing">Pricing</a>
+
+      </div>
+
+
+      <div class="footer-column">
+
+        <h4>
+          Advertisers
+        </h4>
+
+        <a href="#" onclick="startCampaign();return false;">
+          Create campaign
+        </a>
+
+        <a href="#" onclick="showToast('Dashboard coming in the next build.');return false;">
+          Dashboard
+        </a>
+
+        <a href="#" onclick="showToast('Analytics coming in the next build.');return false;">
+          Analytics
+        </a>
+
+      </div>
+
+
+      <div class="footer-column">
+
+        <h4>
+          Support
+        </h4>
+
+        <a href="#faq">FAQ</a>
+        <a href="#" onclick="showToast('Support center coming soon.');return false;">
+          Help Center
+        </a>
+        <a href="#" onclick="showToast('Terms page will be added before launch.');return false;">
+          Terms
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+      <span>
+        © 2026 MiniTube Ads. All rights reserved.
+      </span>
+
+      <span>
+        Built for the MiniTube ecosystem.
+      </span>
+
+    </div>
+
+  </div>
+
+</footer>
+
+
+<!-- TOAST -->
+
+<div
+  class="toast"
+  id="toast"
+  role="status"
+>
+</div>
+
+
+<script>
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+let toastTimer;
+
+function showToast(message){
+
+  const toast =
+    document.getElementById("toast");
+
+  toast.textContent = message;
+
+  toast.classList.add("show");
+
+  clearTimeout(toastTimer);
+
+  toastTimer = setTimeout(() => {
+
+    toast.classList.remove("show");
+
+  }, 3000);
+
+}
+
+
+/* =========================================================
+   START CAMPAIGN
+========================================================= */
+
+function startCampaign(){
+
+  showToast(
+    "Campaign creator will be connected next. Your landing page is ready."
+  );
+
+  /*
+    NEXT PHASE:
+
+    window.location.href = "create-campaign.html";
+
+    Is line ko backend/pages ready hone ke baad
+    uncomment karna hai.
+  */
+}
+
+
+/* =========================================================
+   FAQ
+========================================================= */
+
+function toggleFaq(button){
+
+  const item =
+    button.closest(".faq-item");
+
+  document
+    .querySelectorAll(".faq-item")
+    .forEach(other => {
+
+      if(other !== item){
+
+        other.classList.remove("active");
+
+      }
+
+    });
+
+  item.classList.toggle("active");
+
+}
+
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+function toggleMobileMenu(){
+
+  const nav =
+    document.querySelector(".nav-links");
+
+  if(nav.style.display === "flex"){
+
+    nav.style.display = "";
+
+    return;
+
+  }
+
+  nav.style.display = "flex";
+
+  nav.style.position = "absolute";
+
+  nav.style.top = "64px";
+
+  nav.style.left = "14px";
+
+  nav.style.right = "14px";
+
+  nav.style.padding = "18px";
+
+  nav.style.flexDirection = "column";
+
+  nav.style.alignItems = "flex-start";
+
+  nav.style.background = "#11141c";
+
+  nav.style.border = "1px solid rgba(255,255,255,.09)";
+
+  nav.style.borderRadius = "15px";
+
+}
+
+
+/* =========================================================
+   HEADER SCROLL EFFECT
+========================================================= */
+
+window.addEventListener(
+  "scroll",
+  () => {
+
+    const navbar =
+      document.querySelector(".navbar");
+
+    if(window.scrollY > 20){
+
+      navbar.style.background =
+        "rgba(8,9,13,.94)";
+
+    }else{
+
+      navbar.style.background =
+        "rgba(8,9,13,.78)";
+
+    }
+
+  },
+  {passive:true}
+);
+
+</script>
+
+</body>
+</html>
